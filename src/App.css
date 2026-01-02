@@ -1,0 +1,96 @@
+/* --- LAYOUT WRAPPER --- */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* --- MAIN CONTENT AREA --- */
+/* Navbar ki height (approx 72px) ke hisaab se space dena taaki content overlap na ho */
+main {
+  flex: 1;
+  width: 100%;
+}
+
+/* --- LOGO STYLING --- */
+.nav-logo {
+  height: 38px;
+  width: auto;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-logo:hover {
+  transform: rotate(-3deg) scale(1.08);
+  filter: brightness(1.1);
+}
+
+/* --- CUSTOM ANIMATIONS --- */
+
+/* Smooth Slide Up for Content Cards */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease forwards;
+}
+
+/* Floating Animation for Hero Images */
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: floating 3s ease-in-out infinite;
+}
+
+/* --- UTILITY CLASSES (Fallback) --- */
+
+/* Glass Effect for Overlays */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Premium Gradient Text */
+.text-gradient {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 640px) {
+  .nav-logo {
+    height: 30px;
+  }
+  
+  /* Mobile padding adjustments */
+  .section-padding {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* --- PRINT STYLES (For Article Printing) --- */
+@media print {
+  nav, footer, .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+    color: black;
+  }
+}
